@@ -13,7 +13,7 @@ logging.basicConfig(format='%(levelname).1s %(asctime).23s %(message)s')
 
 logging.basicConfig()
 logger = logging.getLogger('pylambder')
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.WARN)
 
 LOG = crawling.LOG
 
@@ -22,9 +22,9 @@ if __name__ == '__main__':
     depth = int(sys.argv[3])
     open(LOG, 'w').close() # clear the file
     if sys.argv[1] == 'local':
-        crawling.start_local_crawling(url, 1)
+        crawling.start_local_crawling(url, depth)
     elif sys.argv[1] == 'pylambder':
-        task = crawling.start_crawling(url, 1)
+        task = crawling.start_crawling(url, depth)
         time.sleep(10)
     else:
         print(f"Usage: {sys.argv[0]} local|pylambder URL DEPTH")

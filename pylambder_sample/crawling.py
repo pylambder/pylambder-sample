@@ -26,14 +26,15 @@ def start_local_crawling(url, depth):
         return []
 
     urls = get_links(url)
-    print("Crawled", url)
+    print("Crawled", url, f"for {len(urls)} urls")
     _save_found(url, urls)
     for url in urls:
         start_local_crawling(url, depth - 1)
 
+
 def _make_callback(url, depth):
     def callback(urls):
-        print(f"Crawling {url} finished at depth {depth}")
+        print(f"Crawling {url} finished at depth {depth} with {len(urls)} urls")
         sys.stdout.flush()
         _save_found(url, urls)
         if depth > 0:
