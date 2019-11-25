@@ -1,2 +1,2 @@
 pylambder
-numpy
+requests
